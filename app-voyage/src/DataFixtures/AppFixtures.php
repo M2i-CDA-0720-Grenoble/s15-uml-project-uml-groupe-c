@@ -25,10 +25,11 @@ class AppFixtures extends Fixture
         for($i=0;$i < 20 ; $i++)
         {
             $user = new User();
-            $password = $this->encoder->encodePassword($user, 'password');
+            $password = $this->encoder->encodePassword($user, 'password'.$i.$i);
             $user
                 ->setEmail($generator->email)
-                ->setPassword($password);
+                ->setPassword($password)
+                ->setIsVerified(true);
             $manager->persist($user);
 
             $userInfo = new UserInfo();
