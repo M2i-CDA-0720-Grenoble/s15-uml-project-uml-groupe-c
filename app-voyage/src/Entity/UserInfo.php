@@ -39,7 +39,7 @@ class UserInfo
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="reservation")
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="UserInfo")
      */
     private $reservations;
 

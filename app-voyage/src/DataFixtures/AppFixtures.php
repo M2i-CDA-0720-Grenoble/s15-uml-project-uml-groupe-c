@@ -22,6 +22,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $generator = \Faker\Factory::create("fr_FR");
+        var_dump($generator);
         for($i=0;$i < 20 ; $i++)
         {
             $user = new User();
@@ -39,6 +40,7 @@ class AppFixtures extends Fixture
                 ->setLastName($generator->lastName)
                 ->setAge($generator->numberBetween($min = 15, $max = 80));
             $manager->persist($userInfo);
+            
         }
         $manager->flush();
     }
