@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voy'age | détails du voyage{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <h2> Voyager vers {{ voyage.ville }}</h2>
+        <p>{{ voyage.description }}</p>
+        <small> {{ voyage.prix }} € TTC/pers.</small>
+    </div>
+{% endblock %}
