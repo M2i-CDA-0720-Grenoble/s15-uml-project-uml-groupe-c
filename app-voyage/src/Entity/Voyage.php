@@ -61,6 +61,11 @@ class Voyage
      */
     private $transport;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -83,12 +88,12 @@ class Voyage
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDateDebut()
     {
         return $this->dateDebut;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    public function setDateDebut($dateDebut): self
     {
         $this->dateDebut = $dateDebut;
 
@@ -181,6 +186,18 @@ class Voyage
     public function setTransport(?Transport $transport): self
     {
         $this->transport = $transport;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }
