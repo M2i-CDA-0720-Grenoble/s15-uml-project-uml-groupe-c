@@ -22,19 +22,17 @@ class VoyageRepository extends ServiceEntityRepository
     // /**
     //  * @return Voyage[] Returns an array of Voyage objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findMostRecentVoyage()
     {
         return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('v.id', 'ASC')
+            ->orderBy('v.dateDebut', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Voyage

@@ -1,21 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvue sur Voy'age !{% endblock %}
+{% block title %}Bienvenue sur Voy'age !{% endblock %}
 
 {% block body %}
-{# {%  for voyage in voyage %} #}
+<div class="jumbotron">
+    <div class="container">
+    {{ form_start(form)}}
+    <div class="col">
+    {{ form_row(form.maxPrice)}}
+    </div>
+    <div class="col">
+    <button class="btn btn-primary">Rechercher</button>
+    </div>
+    {{ form_end(form)}}
+    </div>
+</div>
     <div class="container my-4">
-        <div class="card-group">
-        <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="http://placeimg.com/640/480/nature" alt="Card image cap">
+        <div class="row">
+        {%  for voyage in voyages %}
+        <div class="col-md-4">
+            <div class="card mb-4" style="width: 18rem;">
+                <img class="card-img-top" src="{{ voyage.image }}" alt="image voyage">
                 <div class="card-body">
-                <h5 class="card-title">Voyage vers : Ville</h5>
-                <h5>Prix € TTC/pers.</h5>
-                <p class="card-text">description</p>
-                <a href="#" class="btn btn-primary">Détails</a>
+                <h5 class="card-title">Voyage vers : {{ voyage.ville }}</h5>
+                <h5>{{ voyage.prix }} € TTC/pers.</h5>
+                <h5> Départ le {{ voyage.dateDebut|format_datetime('short','none',locale='fr') }}</h5>
+                <p class="card-text">{{voyage.description|slice(0,200)}}</p>
+                <a href="{{ path('show', {"id": voyage.id}) }}" class="btn btn-primary">Détails</a>
                 </div>
             </div>
+        </div>
+        {% endfor %}
         <div>
     </div>
-{# {% endblock %} #}
 {% endblock %}
